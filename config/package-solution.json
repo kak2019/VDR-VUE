@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "vue-mock-client-side-solution",
+    "id": "d66c499b-d571-4d65-abcf-b0898e612c91",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "VueMock description"
+      },
+      "longDescription": {
+        "default": "VueMock description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "vue-mock Feature",
+        "description": "The feature that activates elements of the vue-mock solution.",
+        "id": "1c5d087c-e0e1-448d-a6b7-956c32a0f7af",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/vue-mock.sppkg"
+  }
+}
