@@ -12,8 +12,9 @@ export default class VueMockWebPart extends BaseClientSideWebPart<IVueMockWebPar
 
   public render(): void {
     this.domElement.innerHTML = `<div  id="app-${this.context.instanceId}"></div>`
-
-    createApp(AppComponent).mount(`#app-${this.context.instanceId}`);
+    const app = createApp(AppComponent);
+    // createApp(AppComponent).mount(`#app-${this.context.instanceId}`);
+    app.mount(`#app-${this.context.instanceId}`);
   }
   protected onInit(): Promise<void> {
     return super.onInit();
