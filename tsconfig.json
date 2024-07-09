@@ -10,10 +10,11 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
+    "strictNullChecks": false,
     "outDir": "lib",
     "inlineSources": false,
     "noImplicitAny": true,
-
+    "noImplicitThis": true,
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"

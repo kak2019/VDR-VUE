@@ -3,28 +3,33 @@
 * Changes from this file will be merged into the base webpack configuration file.
 * This file will not be overwritten by the subsequent spfx-fast-serve calls.
 */
+const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 /**
  * you can add your project related webpack configuration here, it will be merged using webpack-merge module
  * i.e. plugins: [new webpack.Plugin()]
  */
 const webpackConfig = {
-  plugins: [new VueLoaderPlugin()],
+  devtool: 'source-map',//align with gulpfile, but it seems does not work in fast serve and chrome, try edge or back to gulp serve if you use it.
+  plugins: [new VueLoaderPlugin(),new webpack.DefinePlugin({
+    __VUE_OPTIONS_API__: 'true',
+    __VUE_PROD_DEVTOOLS__: 'false',
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false'
+  })
+  ],
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: [
-          {
-            loader: 'vue-loader',
-            options: {
-              esModule: true
-            }
-          }
-        ]
-      }
-    ]
+        loader: 'vue-loader'
 
+      },
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto'
+      }
+    ],
   }
 }
 

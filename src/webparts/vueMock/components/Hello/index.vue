@@ -1,3 +1,3 @@
 <template>
-    Hello Vue
+    Home Page
 </template>

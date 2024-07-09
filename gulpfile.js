@@ -4,6 +4,7 @@ const build = require('@microsoft/sp-build-web');
 const { merge } = require('webpack-merge');
 const { VueLoaderPlugin } = require('vue-loader');
 
+const webpack = require('webpack');
 build.sass.setConfig({
   sassMatch: []
 });
@@ -14,18 +15,20 @@ build.configureWebpack.mergeConfig({
     config.plugins.push(new VueLoaderPlugin());
 
     var vueConfig = {
+      // eslint-disable-next-line no-undef
+      devtool: process.env.NODE_ENV === 'development' ? 'source-map' : undefined,
+      plugins: [
+        new webpack.DefinePlugin({
+          __VUE_OPTIONS_API__: 'true',
+          __VUE_PROD_DEVTOOLS__: 'false',
+          __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false'
+        })
+      ],
       module: {
         rules: [
           {
             test: /\.vue$/,
-            use: [
-              {
-                loader: 'vue-loader',
-                options: {
-                  esModule: true
-                }
-              }
-            ]
+            loader: 'vue-loader'
           },
           {
             test: /\.scss$/,
@@ -33,8 +36,13 @@ build.configureWebpack.mergeConfig({
               'vue-style-loader',
               'css-loader',
             ]
+          },
+          {
+            test: /\.mjs$/,
+            include: /node_modules/,
+            type: "javascript/auto"
           }
-        ]
+        ],
 
       }
     };
