@@ -1,6 +1,6 @@
 // router.ts
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import HomeComponent from '../webparts/vueMock/components/Hello/index.vue';
+import HomeComponent from '../webparts/vueMock/components/Homepage/index.vue';
 import AboutComponent from '../webparts/vueMock/components/Hello/qrcode.vue';
 
 const routes: Array<RouteRecordRaw> = [
@@ -12,8 +12,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/home',
     component: HomeComponent
 },
-  // { path: '/', component: HomeComponent },
   { path: '/about', component: AboutComponent },
+  { path: '/step', component: import('../webparts/vueMock/components/Step/index.vue') },
   {
     path: '/:patchMatch(.*)',
     component: () => import(/* webpackChunkName: "notfound-chunk" */
